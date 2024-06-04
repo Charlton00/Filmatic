@@ -1,0 +1,23 @@
+.searchBox {
+    border: 5px solid;
+    position: absolute;
+    margin: auto;
+    /*width: 50%;
+    top: 50%;
+    transform: translate(50%, -50%);
+    */
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 10px;
+}
+
+.searchBox textarea {
+    width: 638px;
+    height: 94px;
+    resize: none;
+}
+
+.searchBox textarea:focus::placeholder {
+    color: transparent;
+}
