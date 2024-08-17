@@ -2,18 +2,6 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/Home.css";
 
-//Remove spaces from song titles
-function delimit(array) {
-    let string = "";
-    for (let i = 0; i < array.length; i++) {
-        if (array[i].substring(0, 1) == " ") {
-            string = array[i].substring(1, array[i].length);
-            array[i] = string;
-        }
-    }
-    return array;
-}
-
 const Home = () => {
     
     //Song titles retrieved from textarea
@@ -27,8 +15,7 @@ const Home = () => {
     //Submit form data and send to API
     const handleSubmit = (event) => {
         event.preventDefault(); //Testing only
-        let songs = textArea.split(","); //Delimit input by commas, incorporate more data validation in future
-        songs = delimit(songs);
+        let songs = textArea.split(",").map(title => title.trim()) //Delimit input by commas and trim whitespace, incorporate more data validation in future
         console.log(songs);
     };
 
