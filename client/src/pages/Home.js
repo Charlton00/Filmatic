@@ -16,7 +16,15 @@ const Home = () => {
     const handleSubmit = (event) => {
         event.preventDefault(); //Testing only
         let songs = textArea.split(",").map(title => title.trim()) //Delimit input by commas and trim whitespace, incorporate more data validation in future
-        console.log(songs);
+        // convert list into query string with encodeURIComponent
+        //use fetch 
+        //console.log(songs);
+        let query = songs.map((song, index) => `${index}=${encodeURI(song)}`).join("&");
+        let url = `http://localhost:8000/api/v1/?${query}`;
+        fetch(url)
+            .then(response => response.json())
+            .then(data => console.log(data))
+            .catch(error => console.error("Error: ", error));
     };
 
     return (
